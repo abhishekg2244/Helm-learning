@@ -30,9 +30,9 @@ jobs:
 
       - name: Helm Deploy
         run: |
-          helm upgrade --install abapp ./abapp \
-            --set image.repository=myrepo/myapp \
-            --set image.tag=${{ github.sha }}
+          helm upgrade --install abapp ./abapp 
+            # --set image.repository=myrepo/myapp \
+            # --set image.tag=${{ github.sha }}
 
       - name: Helm Test
         run: helm test abapp
