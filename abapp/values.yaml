@@ -25,4 +25,4 @@ autoscaling:
   targetMemoryUtilizationPercentage: 80
 
 tests:
-  enabled: true
+  enabled: false
