@@ -1,0 +1,15 @@
+#!/bin/bash
+set -e
+
+APP_NAME="myapp"
+CHART_PATH="./myapp"
+IMAGE="myrepo/myapp:$(git rev-parse --short HEAD)"
+
+# Build & push image (local or registry)
+docker build -t $IMAGE .
+minikube image load $IMAGE
+
+# Deploy with Helm
+helm upgrade --install $APP_NAME $CHART_PATH \
+  --set image.repository=myrepo/myapp \
+  --set image.tag=$(git rev-parse --short HEAD)
